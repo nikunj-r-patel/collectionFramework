@@ -39,8 +39,21 @@ public class ListInterface {
 		l2.add("tejas");
 		l2.add("niraj");
 		l2.add("nikunj");
-		
+		System.out.println("l2 before sorting");
 		System.out.println(l2);
+		Collections.sort(l2);
+		System.out.println("l2 after sorting");
+		System.out.println(l2);
+		System.out.println("l2 after reverse order1");
+		Collections.sort(l2,Collections.reverseOrder());
+		System.out.println(l2);
+		System.out.println("-----------------remove duplicates from Array list----------");
+		
+		System.out.println(l2.toString());
+		System.out.println("-----------------after removing duplicates from Array list----------");
+		Set<String>arrSet=new HashSet<>(l2);
+		System.out.println(arrSet);
+	
 		l2.set(3, "ravi");
 		System.out.println(l2);
 		System.out.println(l2.indexOf("nikunj"));
@@ -83,7 +96,7 @@ public class ListInterface {
 			System.out.println(itr2.next()); 
 			
 		}
-		
+		System.out.println("---------------------------");
 		List<Student> stud1=new ArrayList<>();
 		stud1.add(new Student(101, "nikunj", 36));
 		stud1.add(new Student(103, "manish", 37));
@@ -96,13 +109,40 @@ public class ListInterface {
 			System.out.println(itr3.next());
 			
 		}
-		
+		System.out.println("---------------------------");
 		Collections.sort(stud1, new TwoVaribleComparing());
 		Iterator<Student>itr4=stud1.iterator();
 		while (itr4.hasNext()) {
 			System.out.println(itr4.next());
 			
 		}
+		System.out.println("---------------------------");
+		List<Student>stud2=new LinkedList<>();
+		stud2.addAll(stud1);
+		stud2.forEach(st->{System.out.println(st);});
+		
+		System.out.println("---------------------------");
+		
+		ListIterator<Student>litr1=stud2.listIterator(stud2.size());
+		while(litr1.hasPrevious()) {
+			Student s1=(Student)litr1.previous();
+			System.out.println(s1.getRollNo()+" "+s1.getName()+" "+s1.getAge());
+		}
+		System.out.println("---------------------------");
+		List<Employee> stud3=new Vector<>();
+		stud3.addAll(empColl);
+		ListIterator<Employee> litr2=stud3.listIterator();
+		litr2.forEachRemaining(emp1->{System.out.println(emp1.getIdNo()+" "+emp1.getName()+" "+emp1.getAddress());});
+		System.out.println("---------------------------vector with enumeration");
+		Vector<Employee> v1=new Vector<>();
+		v1.addAll(empColl);
+		Enumeration e1=v1.elements();
+		while (e1.hasMoreElements()) {
+			Object object = (Object) e1.nextElement();
+			System.out.println(object);
+			
+		}
+		
 		
 	}
 
